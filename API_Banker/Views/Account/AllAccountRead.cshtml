@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Résultat recherche";
+    Layout = "_Layout";
+    API_Banker.Account account = (API_Banker.Account)ViewData["Account"];
+}
+
+<h1 class="my-5">@ViewData["TitlePage"]</h1>
+
+<table class="table mb-5 table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Numéro de compte
+            </th>
+            <th>
+                Solde
+            </th>
+            <th>
+                Date de création
+            </th>
+            <th>
+                Autorisation de découvert
+            </th>
+            <th>
+                Montant autorisé de découvert
+            </th>
+          @*  <th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @account.AccountNumber
+            </td>
+            <td>
+                @decimal.Round(account.AccountBalance ?? 0, 2)
+            </td>
+            <td>
+                @account.AccountCreationDate
+            </td>
+            <td>
+                @account.resultOverdraftAuthorization()
+            </td>
+            <td>
+                @decimal.Round(account.OverdraftAmount ?? 0, 2)
+            </td>
+            <!--<td>-->
+            @* @Html.ActionLink("Editer", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Détails", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Supprimer", "Delete", new { /* id=item.PrimaryKey */ })*@
+            <!--</td>-->
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Recherche Client";
+    Layout = "_Layout";
+}
+
+<h1 class="my-5">Recherche d'un client</h1>
+
+<form method="get" action="http://localhost:51090/Customer/Read">
+    <div class="form-row align-items-center">
+        <div class="col-sm-3 my-1">
+            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Numéro client</div>
+                </div>
+                <input type="number" class="form-control" id="inlineFormInputGroupUsername" name="customerNumber" required>
+            </div>
+        </div>
+        <div class="col-auto my-1">
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+        </div>
+    </div>
+    <p class="font-weight-lighter font-italic">(8 chiffres)</p>
+</form>

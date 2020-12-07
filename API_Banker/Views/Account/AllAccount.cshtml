@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Liste de tous les comptes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="my-5">Liste de tous les comptes </h1>
+<table class="table mb-5 table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Numéro de compte
+            </th>
+            <th>
+                Solde
+            </th>
+            <th>
+                Date de création
+            </th>
+            <th>
+                Autorisation de découvert
+            </th>
+            <th>
+                Montant autorisé de découvert
+            </th>
+
+          @*  <th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (API_Banker.Account account in ViewData["ListAllAccount"] as List<API_Banker.Account>)
+        {
+            <tr>
+                <td>
+                    @account.AccountNumber
+                </td>
+                <td>
+                    @decimal.Round(account.AccountBalance??0 , 2)
+                </td>
+                <td>
+                    @account.AccountCreationDate
+                </td>
+                <td>
+                    @account.resultOverdraftAuthorization()
+                </td>
+                <td>
+                    @decimal.Round(account.OverdraftAmount??0, 2)
+                </td>
+                <!--<td>-->
+                    @*<a href="http://localhost:51090/Customer/Edit/@customer.customerNumber">Editer</a>*@
+                    @*@Html.ActionLink("Editer", "Edit", "Customer", new {  customerNumber=customer.customerNumber })*@
+                    @*@Html.ActionLink("Détails", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Supprimer", "Delete", new { /* id=item.PrimaryKey */ })*@
+                <!--</td>-->
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

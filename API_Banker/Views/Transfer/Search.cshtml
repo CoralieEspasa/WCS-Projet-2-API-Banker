@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Recherche Transfer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="my-5">Recherche transfert par compte</h1>
+
+<form method="get" action="http://localhost:51090/Transfer/getlist">
+    <div class="form-row align-items-center">
+        <div class="col-sm-4 my-1">
+            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Numéro de compte</div>
+                </div>
+                <input type="number" class="form-control" id="inlineFormInputGroupUsername" name="accountNumber" required>
+            </div>
+        </div>
+        <div class="col-auto my-1">
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+        </div>
+    </div>
+    <p class="font-weight-lighter font-italic">(11 chiffres)</p>
+</form>
+

@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "Résultat recherche";
+    Layout = "_Layout";
+    API_Banker.Customer customer = (API_Banker.Customer)ViewData["Customers"];
+}
+
+<h1 class="my-5">@ViewData["TitlePage"]</h1>
+
+<table class="table mb-5 table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Numéro
+            </th>
+            <th>
+                Nom
+            </th>
+            <th>
+                Prénom
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Téléphone
+            </th>
+            <th>
+                Anniversaire
+            </th>
+       @*     <th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>
+                    @customer.customerNumber
+                </td>
+                <td>
+                    @customer.customerLastName
+                </td>
+                <td>
+                    @customer.customerFirstName
+                </td>
+                <td>
+                    @customer.customerEmail
+                </td>
+                <td>
+                    @customer.customerPhone
+                </td>
+                <td>
+                    @customer.customerBirthDate.Day/@customer.customerBirthDate.Month/@customer.customerBirthDate.Year
+                </td>
+                <!--<td>-->
+          @*          @Html.ActionLink("Editer", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Détails", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Supprimer", "Delete", new { /* id=item.PrimaryKey */ })*@
+                <!--</td>-->
+            </tr>
+    </tbody>
+</table>
+
+

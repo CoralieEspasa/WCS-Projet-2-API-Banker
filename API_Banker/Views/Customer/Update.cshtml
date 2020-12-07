@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewData["Title"] = "Edition d'un client";
+    Layout = "_Layout";
+    API_Banker.Customer customer = (API_Banker.Customer)ViewData["Customers"];
+}
+
+<h1 class="my-5 text-center">Edition d'un client</h1>
+
+<form class="my-5 mx-auto" id="formdata">
+    <div class="form-row">
+        <div class="col-md-2 mb-3">
+            <label for="validationDefault04">Civilité</label>
+            <select class="custom-select" id="validationDefault01" required name="customerIsFemale">
+                <option selected value="true">Mme</option>
+                <option value="false">Mr</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-2 mb-3">
+            <label for="validationDefault01">Numéro client</label>
+            <input type="number" class="form-control" id="validationDefault02" required name="customerNumber" maxlength="8" value="@customer.customerNumber">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-3 mb-3">
+            <label for="validationDefault02">Nom</label>
+            <input type="text" class="form-control" id="validationDefault04" required name="customerLastName" value="@customer.customerLastName">
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="validationDefault01">Prénom</label>
+            <input type="text" class="form-control" id="validationDefault03" required name="customerFirstName" value="@customer.customerFirstName">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Date de naissance</label>
+            <input type="date" class="form-control" id="validationDefault05" required name="customerBirthDate" value="">
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Phone</label>
+            <input type="tel" class="form-control" id="validationDefault07" required name="customerPhone" value="@customer.customerPhone">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="validationDefault03">Email</label>
+            <input type="email" class="form-control" id="validationDefault06" required name="customerEmail" value="@customer.customerEmail">
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Enregistrer</button>
+</form>
+
+<p class="text-center font-weight-bold" id="resultForm"></p>
+
+<script>
+
+    let form = document.querySelector('#formdata');
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        let data = new FormData(form);
+        let response = await fetch('http://localhost:51090/Customer/new', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: data,
+            mode: "no-cors"
+        });
+        let responseData = await response.json();
+
+        if (response.ok === false)
+        {
+            let result = document.querySelector('#resultForm');
+            result.classList.add("text-danger");
+            result.innerHTML = "Oops, une erreur s'est produite...Veuillez réessayer.";
+        }
+        else
+        {
+            let inputs = form.querySelectorAll('input');
+            for (let i = 0; i < inputs.length; i++)
+            {
+                inputs[i].value = '';
+            }
+
+            let result = document.querySelector('#resultForm');
+            result.classList.add("text-success");
+            result.innerHTML = "Enregistrement effectué, merci d'avoir choisi notre solution bancaire.";
+        }
+    });
+
+</script>

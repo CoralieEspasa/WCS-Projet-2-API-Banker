@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "Liste des transferts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="my-5">Liste des Transferts</h1>
+
+<h3 class="my-3">Débits</h3>
+
+<table class="table mb-5 table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Date du transfert
+            </th>
+            <th>
+                Montant
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (API_Banker.Transfer transferDebit in ViewData["TransferDebit"] as IEnumerable<API_Banker.Transfer>)
+        {
+            <tr>
+                <td>
+                    @transferDebit.transferDate
+                </td>
+                <td>
+                    @transferDebit.transferAmount
+                </td>
+                <!--<td>
+                  //  <a href="http://localhost:51090/Customer/Edit/customer.customerNumber">Editer</a>-->
+                @*@Html.ActionLink("Editer", "Edit", "Customer", new {  customerNumber=customer.customerNumber })*@
+                @*@Html.ActionLink("Détails", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Supprimer", "Delete", new { /* id=item.PrimaryKey */ })*@
+                <!--</td>-->
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3 class="my-3">Crédits</h3>
+
+<table class="table mb-5 table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Date du transfert
+            </th>
+            <th>
+                Montant
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (API_Banker.Transfer transferCredit in ViewData["TransferCredit"] as IEnumerable<API_Banker.Transfer>)
+        {
+            <tr>
+                <td>
+                    @transferCredit.transferDate
+                </td>
+                <td>
+                    @transferCredit.transferAmount
+                </td>
+                <!--<td>
+                  //  <a href="http://localhost:51090/Customer/Edit/customer.customerNumber">Editer</a>-->
+                @*@Html.ActionLink("Editer", "Edit", "Customer", new {  customerNumber=customer.customerNumber })*@
+                @*@Html.ActionLink("Détails", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Supprimer", "Delete", new { /* id=item.PrimaryKey */ })*@
+                <!--</td>-->
+            </tr>
+        }
+    </tbody>
+</table>

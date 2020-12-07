@@ -1,0 +1,64 @@
+﻿@model IEnumerable<API_Banker.Customer>
+
+@{
+    ViewData["Title"] = "Liste des Clients";
+    Layout = "_Layout";
+}
+
+<h1 class="my-5">Liste des Clients</h1>
+
+<table class="table mb-5 table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Numéro
+            </th>
+            <th>
+                Nom
+            </th>
+            <th>
+                Prénom
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Téléphone
+            </th>
+            <th>
+                Anniversaire
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (API_Banker.Customer customer in ViewData["Customers"] as List<API_Banker.Customer>) {
+        <tr>
+            <td>
+                @customer.customerNumber
+            </td>
+            <td>
+                @customer.customerLastName
+            </td>
+            <td>
+                @customer.customerFirstName
+            </td>
+            <td>
+                @customer.customerEmail
+            </td>
+            <td>
+                @customer.customerPhone
+            </td>
+            <td>
+                @customer.customerBirthDate.Day/@customer.customerBirthDate.Month/@customer.customerBirthDate.Year
+            </td>
+            <td>
+                <a href="http://localhost:51090/Customer/Edit/@customer.customerNumber">Editer</a>
+                @*@Html.ActionLink("Editer", "Edit", "Customer", new {  customerNumber=customer.customerNumber })*@
+                @*@Html.ActionLink("Détails", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Supprimer", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
