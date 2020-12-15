@@ -6,7 +6,7 @@ Projet 2 @ Wild Code School Toulouse - API REST
 
 ## A propos :
 
-Création d'une API suivant les principes d'architecture REST sur le thème bancaire.
+Création d'une API suivant quelques principes d'architecture REST sur le thème bancaire.
 
 - Gestion de clients (création, modification, suppression)
 - Gestion de comptes (création, modification, suppression)
